@@ -6,28 +6,35 @@
 
 <style>
 
+:root{
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: rgba(15, 23, 42, 0.10);
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.10);
+  --accent: #4f46e5; /* indigo */
+  --accent-2: #7c3aed; /* purple */
+  --accent-soft: rgba(79, 70, 229, 0.12);
+  --radius: 14px;
+}
+
 body{
 font-family: Arial, Helvetica, sans-serif;
-background:#0f172a;
-color:white;
+background:var(--bg);
+color:var(--text);
 margin:0;
 padding:0;
-padding-top:64px;
 }
 
 .topnav{
-position:fixed;
-top:0;
-left:0;
-right:0;
-height:64px;
-z-index:1000;
 display:flex;
 align-items:center;
 justify-content:center;
-background:rgba(15,23,42,0.9);
+background:rgba(248,250,252,0.75);
 backdrop-filter: blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.08);
+border-bottom:1px solid var(--border);
 }
 
 .topnav-inner{
@@ -36,12 +43,13 @@ max-width:calc(100% - 40px);
 display:flex;
 align-items:center;
 justify-content:space-between;
+padding:14px 0;
 }
 
 .brand{
 font-weight:700;
 letter-spacing:0.2px;
-color:white;
+color:var(--text);
 text-decoration:none;
 }
 
@@ -51,15 +59,15 @@ gap:14px;
 }
 
 .navlinks a{
-color:#cbd5e1;
+color:var(--muted);
 text-decoration:none;
 padding:8px 10px;
 border-radius:8px;
 }
 
 .navlinks a:hover{
-background:rgba(59,130,246,0.16);
-color:white;
+background:var(--accent-soft);
+color:var(--text);
 }
 
 .anchor-target{
@@ -77,68 +85,197 @@ text-align:center;
 margin-bottom:20px;
 }
 
+.hero{
+  padding:26px 0 4px;
+}
+
+.hero-inner{
+  background:linear-gradient(135deg, rgba(79,70,229,0.10), rgba(124,58,237,0.08));
+  border:1px solid var(--border);
+  border-radius:calc(var(--radius) + 6px);
+  padding:26px;
+  box-shadow: var(--shadow);
+}
+
+.hero h1{
+  text-align:left;
+  margin:0;
+  font-size:34px;
+  letter-spacing:-0.3px;
+}
+
+.hero p{
+  margin:10px 0 0;
+  color:var(--muted);
+  line-height:1.55;
+  max-width:75ch;
+}
+
+.hero-actions{
+  margin-top:16px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.tabs{
+  margin-top:18px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:calc(var(--radius) + 6px);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+.tablist{
+  display:flex;
+  gap:8px;
+  padding:10px;
+  border-bottom:1px solid var(--border);
+  background:rgba(241,245,249,0.7);
+}
+
+.tab{
+  appearance:none;
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--muted);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+  margin:0;
+}
+
+.tab[aria-selected="true"]{
+  background:var(--accent-soft);
+  color:var(--text);
+  border-color: rgba(79,70,229,0.22);
+}
+
+.tab:disabled{
+  opacity:0.55;
+  cursor:not-allowed;
+}
+
+.tabpanel{
+  padding:18px;
+}
+
+.panel-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
 .card{
-background:#1e293b;
-padding:20px;
+background:var(--surface);
+padding:18px;
 margin-bottom:20px;
-border-radius:10px;
+border-radius:var(--radius);
+border:1px solid var(--border);
 }
 
 textarea,input{
 width:100%;
 padding:10px;
 margin-top:10px;
-border-radius:5px;
-border:none;
+border-radius:12px;
+border:1px solid rgba(15, 23, 42, 0.14);
+background: #ffffff;
+color: var(--text);
+outline: none;
+}
+
+textarea:focus,input:focus{
+  border-color: rgba(79,70,229,0.45);
+  box-shadow: 0 0 0 4px rgba(79,70,229,0.12);
 }
 
 button{
 margin-top:10px;
 padding:10px 15px;
-background:#3b82f6;
-border:none;
-border-radius:5px;
+background:var(--accent);
+border:1px solid rgba(79,70,229,0.22);
+border-radius:12px;
 color:white;
 cursor:pointer;
 }
 
 button:hover{
-background:#2563eb;
+filter: brightness(0.98);
 }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+.btn-secondary{
+  background:transparent;
+  color:var(--text);
+  border:1px solid rgba(15, 23, 42, 0.16);
 }
 
 .step{
-background:#111827;
-padding:15px;
-border-radius:8px;
+background:var(--surface-2);
+padding:12px;
+border-radius:12px;
 margin-top:10px;
+border:1px solid rgba(15, 23, 42, 0.10);
 }
 
 .highlight{
-color:#60a5fa;
+color:var(--accent-2);
 font-weight:bold;
 }
 
 .output{
-background:black;
-padding:10px;
-border-radius:5px;
+background: #0b1220;
+color: #e5e7eb;
+padding:12px;
+border-radius:12px;
 margin-top:10px;
 white-space:pre-wrap;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+font-size: 13px;
+border: 1px solid rgba(255,255,255,0.08);
+}
+
+.answer-output{
+  background: linear-gradient(135deg, rgba(79,70,229,0.14), rgba(124,58,237,0.12));
+  border: 1px solid rgba(79,70,229,0.22);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  position: relative;
+}
+
+.answer-output:empty{
+  padding:0;
+  border-color: transparent;
+  background: transparent;
+}
+
+.answer-output::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  bottom:-7px;
+  width:14px;
+  height:14px;
+  background: rgba(79,70,229,0.12);
+  border-left: 1px solid rgba(79,70,229,0.22);
+  border-bottom: 1px solid rgba(79,70,229,0.22);
+  transform: rotate(45deg);
+}
+
+.answer-output:empty::before{
+  content:none;
 }
 
 @media (max-width: 900px){
   .container{
     width:auto;
   }
-  .grid{
-    grid-template-columns:1fr;
-  }
+  .panel-grid{ grid-template-columns:1fr; }
 }
 
 </style>
@@ -159,11 +296,26 @@ white-space:pre-wrap;
 
 <div id="home" class="container anchor-target">
 
-<h1>RAG Simulator (Learning Tool)</h1>
+<section class="hero">
+  <div class="hero-inner">
+    <h1>RAG Simulator</h1>
+    <p>Learn the RAG flow end-to-end: add a knowledge base, chunk it, generate simple embeddings, retrieve context, and produce a final answer.</p>
+    <div class="hero-actions">
+      <button class="btn-secondary" type="button" onclick="loadSample()">Load sample</button>
+      <button class="btn-secondary" type="button" onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+</section>
 
-<div class="grid">
+<section class="tabs" aria-label="RAG simulator tabs">
+  <div class="tablist" role="tablist" aria-label="Steps">
+    <button id="tab-kb" class="tab" type="button" role="tab" aria-selected="true" aria-controls="panel-kb" onclick="selectTab('kb')">Knowledge Base</button>
+    <button id="tab-ask" class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-ask" onclick="selectTab('ask')" disabled>Ask</button>
+  </div>
 
-<div class="card">
+  <div id="panel-kb" class="tabpanel" role="tabpanel" aria-labelledby="tab-kb">
+    <div class="panel-grid">
+      <div class="card">
 
 <h2>Step 1: Add Knowledge Base</h2>
 
@@ -184,35 +336,55 @@ white-space:pre-wrap;
 </div>
 
 </div>
+      <div class="card">
+        <h2>What you’ll do here</h2>
+        <p style="color:var(--muted); margin:0; line-height:1.55;">
+          Add a few sentences in the knowledge base, then create chunks and embeddings.
+          Once embeddings exist, the <strong>Ask</strong> tab unlocks so you can retrieve relevant context.
+        </p>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
+  <div id="panel-ask" class="tabpanel" role="tabpanel" aria-labelledby="tab-ask" hidden>
+    <div class="panel-grid">
+      <div class="card">
 
 <h2>Step 2: Ask a Question</h2>
 
 <input id="query" placeholder="Ask a question"/>
 
-<button onclick="embedQuery()">Embed Query</button>
+<button id="btnEmbedQuery" onclick="embedQuery()">Embed Query</button>
 
 <div class="step">
 <div class="highlight">Query Embedding</div>
 <div id="queryEmbedding" class="output"></div>
 </div>
 
-<button onclick="retrieve()">Retrieve Relevant Chunks</button>
+<button id="btnRetrieve" onclick="retrieve()">Retrieve Relevant Chunks</button>
 
 <div class="step">
 <div class="highlight">Retrieved Context</div>
 <div id="retrieved" class="output"></div>
 </div>
 
-<button onclick="generate()">Generate Answer</button>
+<button id="btnGenerate" onclick="generate()">Generate Answer</button>
 
 <div class="step">
 <div class="highlight">LLM Answer</div>
-<div id="answer" class="output"></div>
+<div id="answer" class="output answer-output"></div>
 </div>
 
 </div>
+      <div class="card">
+        <h2>Tip</h2>
+        <p style="color:var(--muted); margin:0; line-height:1.55;">
+          Try a question that clearly overlaps with one of your chunks. Retrieval uses cosine similarity over a simple bag-of-words embedding.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 </div>
 
@@ -243,6 +415,70 @@ let chunks=[]
 let vectors=[]
 let retrievedChunks=[]
 let queryVector=[]
+
+function selectTab(tab){
+  const tabKb = document.getElementById("tab-kb")
+  const tabAsk = document.getElementById("tab-ask")
+  const panelKb = document.getElementById("panel-kb")
+  const panelAsk = document.getElementById("panel-ask")
+
+  const isKb = tab === "kb"
+  tabKb.setAttribute("aria-selected", isKb ? "true" : "false")
+  tabAsk.setAttribute("aria-selected", isKb ? "false" : "true")
+  panelKb.hidden = !isKb
+  panelAsk.hidden = isKb
+
+  if(!isKb) document.getElementById("query")?.focus()
+}
+
+function setAskEnabled(enabled){
+  const tabAsk = document.getElementById("tab-ask")
+  if(tabAsk) tabAsk.disabled = !enabled
+}
+
+function clearOutputs(){
+  const ids=["chunks","vectors","queryEmbedding","retrieved","answer"]
+  ids.forEach(id=>{
+    const el=document.getElementById(id)
+    if(el) el.innerText=""
+  })
+}
+
+function clearAll(){
+  chunks=[]
+  vectors=[]
+  retrievedChunks=[]
+  queryVector=[]
+  const docs=document.getElementById("documents")
+  const query=document.getElementById("query")
+  if(docs) docs.value=""
+  if(query) query.value=""
+  clearOutputs()
+  setAskEnabled(false)
+  selectTab("kb")
+}
+
+function loadSample(){
+  const docs=document.getElementById("documents")
+  const query=document.getElementById("query")
+  if(docs){
+    docs.value=[
+      "RAG combines retrieval with generation to answer questions grounded in external knowledge",
+      "Chunking splits long documents into smaller passages for more accurate retrieval",
+      "Embeddings convert text into vectors so we can compare similarity",
+      "Cosine similarity measures how close two vectors are by their angle",
+      "A vector database stores embeddings and lets you retrieve the most relevant chunks"
+    ].join(". ") + "."
+  }
+  if(query) query.value="How does RAG use retrieval to ground answers?"
+  clearOutputs()
+  chunks=[]
+  vectors=[]
+  retrievedChunks=[]
+  queryVector=[]
+  setAskEnabled(false)
+  selectTab("kb")
+}
 
 function tokenize(text){
 return text.toLowerCase().split(/\W+/)
@@ -279,6 +515,11 @@ return dot/(Math.sqrt(norm1)*Math.sqrt(norm2)+0.0001)
 function createChunks(){
 
 let text=document.getElementById("documents").value
+if(!text.trim()){
+  clearOutputs()
+  setAskEnabled(false)
+  return
+}
 
 chunks=text.split(".").map(c=>c.trim()).filter(c=>c)
 
@@ -289,6 +530,14 @@ chunks.map((c,i)=>"Chunk "+(i+1)+": "+c).join("\n")
 
 function createEmbeddings(){
 
+if(!chunks.length){
+  createChunks()
+}
+if(!chunks.length){
+  setAskEnabled(false)
+  return
+}
+
 vectors=chunks.map(c=>({
 text:c,
 vector:vectorize(c)
@@ -297,11 +546,20 @@ vector:vectorize(c)
 document.getElementById("vectors").innerText=
 JSON.stringify(vectors.map(v=>v.vector),null,2)
 
+setAskEnabled(true)
+
 }
 
 function embedQuery(){
 
 let query=document.getElementById("query").value
+if(!vectors.length){
+  return
+}
+if(!query.trim()){
+  document.getElementById("queryEmbedding").innerText=""
+  return
+}
 
 queryVector=vectorize(query)
 
@@ -311,6 +569,16 @@ JSON.stringify(queryVector,null,2)
 }
 
 function retrieve(){
+
+if(!vectors.length){
+  return
+}
+if(!Object.keys(queryVector||{}).length){
+  embedQuery()
+}
+if(!Object.keys(queryVector||{}).length){
+  return
+}
 
 let scored=vectors.map(v=>{
 
@@ -333,6 +601,15 @@ retrievedChunks.map(c=>"Score: "+c.score.toFixed(2)+"\n"+c.text).join("\n\n")
 function generate(){
 
 let query=document.getElementById("query").value
+if(!query.trim()){
+  return
+}
+if(!retrievedChunks.length){
+  retrieve()
+}
+if(!retrievedChunks.length){
+  return
+}
 
 let context=retrievedChunks.map(c=>c.text).join(". ")
 
@@ -345,6 +622,10 @@ context+
 document.getElementById("answer").innerText=answer
 
 }
+
+// Initial state
+setAskEnabled(false)
+selectTab("kb")
 
 </script>
 
